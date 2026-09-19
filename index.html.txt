@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulator Station - MSFS Docs</title>
+    <!-- Google Fonts for a clean, modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* ==========================================
+           COLOR PALETTE & VARIABLES
+           ========================================== */
+        :root {
+            --bg-main: #0B111A;      
+            --bg-card: #101923;      
+            --border-color: #26364D; 
+            --text-muted: #8B949E;   
+            --accent: #639DF0;       
+            --text-main: #FFFFFF;    
+        }
+
+        /* ==========================================
+           HIDE SCROLLBARS FOR NATIVE APP LOOK
+           ========================================== */
+        ::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+        html {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        /* ==========================================
+           BASE STYLES
+           ========================================== */
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            overflow-x: hidden; 
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+
+        /* ==========================================
+           NAVBAR
+           ========================================== */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: var(--bg-card);
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 40px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--text-main);
+        }
+        .nav-brand img {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent);
+        }
+
+        /* ==========================================
+           HERO SECTION
+           ========================================== */
+        .hero {
+            text-align: center;
+            padding: 80px 20px 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .msfs-badge {
+            display: inline-block;
+            background-color: rgba(99, 157, 240, 0.1);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin: 0 0 20px 0;
+            line-height: 1.2;
+        }
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+        .btn {
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-block;
+        }
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--bg-main);
+            border: none;
+        }
+        .btn-primary:hover {
+            box-shadow: 0 0 15px rgba(99, 157, 240, 0.4);
+        }
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+        .btn-secondary:hover {
+            border-color: var(--text-muted);
+            background-color: var(--bg-card);
+        }
+
+        .app-showcase {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto 60px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            overflow: hidden;
+            background-color: var(--bg-card);
+        }
+        .app-showcase img {
+            width: 100%;
+            display: block;
+        }
+
+        /* ==========================================
+           FEATURES GRID
+           ========================================== */
+        .features-section {
+            padding: 40px 20px 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 40px;
+            color: var(--text-main);
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+        .card h3 {
+            color: var(--text-main);
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin-top: 0;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+        }
+        .card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .card ul li {
+            margin-bottom: 18px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            position: relative;
+            padding-left: 15px;
+        }
+        .card ul li::before {
+            content: "•";
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2rem;
+            line-height: 1;
+            top: 2px;
+        }
+        .card ul li strong {
+            color: var(--accent);
+            display: block;
+            margin-bottom: 4px;
+            font-size: 1rem;
+        }
+        
+        .card ul li ul {
+            margin-top: 10px;
+            padding-left: 10px;
+        }
+        .card ul li ul li {
+            margin-bottom: 8px;
+        }
+        .card ul li ul li::before {
+            content: "-";
+            font-size: 1rem;
+        }
+        .card ul li ul li strong {
+            display: inline;
+            color: var(--text-main);
+        }
+
+        /* ==========================================
+           SETUP GUIDE & WALKTHROUGH SECTION
+           ========================================== */
+        .setup-section {
+            padding: 40px 20px 80px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .setup-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+        .setup-alert {
+            background-color: var(--bg-card);
+            border-left: 4px solid var(--accent);
+            border-radius: 0 8px 8px 0;
+            padding: 25px;
+            margin-bottom: 40px;
+            border-top: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .setup-alert h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: var(--text-main);
+        }
+        .setup-alert ul {
+            margin: 0;
+            padding-left: 20px;
+            color: var(--text-muted);
+        }
+        .setup-alert ul li {
+            margin-bottom: 8px;
+        }
+        .setup-step {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 35px;
+            margin-bottom: 30px;
+        }
+        .step-label {
+            display: inline-block;
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        .setup-step h3 {
+            font-size: 1.8rem;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+        .setup-step p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .code-box {
+            background-color: var(--bg-main);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            font-family: monospace;
+            color: var(--text-muted);
+            margin-top: 15px;
+        }
+        .code-box strong {
+            color: var(--accent);
+            font-size: 1.1rem;
+            display: block;
+            margin-top: 5px;
+        }
+        .custom-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        .custom-list li {
+            background-color: var(--bg-main);
+            border: 1px solid var(--border-color);
+            margin-bottom: 10px;
+            padding: 15px 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            color: var(--text-muted);
+        }
+        .custom-list li strong {
+            color: var(--text-main);
+            margin-right: 15px;
+            min-width: 250px;
+        }
+        .important-note {
+            background-color: rgba(99, 157, 240, 0.05);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid rgba(99, 157, 240, 0.2);
+            color: var(--text-muted);
+            margin-top: 25px;
+        }
+        .important-note strong {
+            color: var(--text-main);
+        }
+        .success-img {
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin-top: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        /* ==========================================
+           FAQ SECTION
+           ========================================== */
+        .faq-item {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        .faq-item:hover {
+            border-color: var(--accent);
+            transform: translateX(5px);
+            box-shadow: -5px 5px 15px rgba(0,0,0,0.3);
+        }
+        .faq-item h4 {
+            color: var(--accent);
+            margin-top: 0;
+            margin-bottom: 12px;
+            font-size: 1.15rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .faq-item h4::before {
+            content: "Q:";
+            color: var(--text-main);
+            font-weight: 800;
+        }
+        .faq-item p {
+            color: var(--text-muted);
+            margin: 0;
+            padding-left: 32px;
+            line-height: 1.7;
+        }
+        .faq-item p strong {
+            color: var(--text-main);
+        }
+
+        /* ==========================================
+           MOBILE RESPONSIVENESS
+           ========================================== */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 15px 20px;
+                gap: 15px;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            .hero {
+                padding: 40px 15px 20px;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero-actions {
+                flex-direction: column;
+            }
+            .btn {
+                width: 100%;
+            }
+            .custom-list li {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+            .custom-list li strong {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <img src="https://raw.githubusercontent.com/osamanabel1999/App-assets/refs/heads/main/4DE2A4DD-0A01-4D3A-BAD1-A978B6AE80DC.png" alt="Simulator Station Logo">
+            Simulator Station Docs
+        </div>
+        <div class="nav-links">
+            <a href="#" class="active">MSFS Home</a>
+            <a href="#features">Features</a>
+            <a href="#setup">Installation & Connection</a>
+            <a href="#walkthrough">Walkthrough</a>
+            <a href="#faq">FAQ</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <div class="msfs-badge">Fully Supports MSFS 2020 & MSFS 2024</div>
+        <h1>The Ultimate Control Hub</h1>
+        <p>Elevate your Microsoft Flight Simulator experience with precision aircraft repositioning, live interactive radar, virtual crew operations, and a fully integrated smart EFB.</p>
+        
+        <div class="hero-actions">
+            <a href="#features" class="btn btn-primary">Explore Features</a>
+            <a href="#setup" class="btn btn-secondary">Installation & Connection (Next)</a>
+        </div>
+
+        <div class="app-showcase">
+            <img src="https://raw.githubusercontent.com/osamanabel1999/App-assets/refs/heads/main/0B235E9F-F201-4F3D-9427-B0C9F254C522.png" alt="Simulator Station Interface">
+        </div>
+    </header>
+
+    <!-- FEATURES GRID -->
+    <section id="features" class="features-section">
+        <h2 class="section-title">Everything You Need. All In One Place.</h2>
+        
+        <div class="grid">
+            
+            <div class="card">
+                <h3>📍 Precision Aircraft Repositioning & World Tour</h3>
+                <ul>
+                    <li><strong>Dynamic Approach Setup:</strong> Instantly position your aircraft on final approach at exact distances (7, 10, or 15 nautical miles), or snap to Left/Right Base and Left/Right Downwind legs.</li>
+                    <li><strong>Interactive Airport Charts & Gate Spawning:</strong> View detailed, fully drawn airport charts featuring taxiways and gates. Click on any gate on the chart to instantly teleport your aircraft to that exact stand.</li>
+                    <li><strong>Advanced Navaid Teleportation:</strong> Search for any Navaid to view its data. Set your desired distance, altitude, airspeed, and radial, and teleport perfectly into position.</li>
+                    <li><strong>Scenic World Tour:</strong> Access over 30 of the world’s most breathtaking, highly detailed tourist destinations. Click and teleport instantly to enjoy stunning views without flying a full route.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>🌍 Next-Gen Interactive Map & Radar</h3>
+                <ul>
+                    <li><strong>Live Network Traffic:</strong> Track IVAO and VATSIM flights in real-time alongside Airports, Navaids, Waypoints, Airways, Holds, FIRs, PIREPs, and your exact flight path.</li>
+                    <li><strong>Click-to-Teleport:</strong> Click absolutely anywhere on the map to instantly teleport your aircraft. You maintain full control over the spawned altitude, airspeed, and heading.</li>
+                    <li><strong>Comprehensive Data on Demand:</strong>
+                        <ul>
+                            <li><strong>Aircraft:</strong> Click any live traffic to view full flight telemetry.</li>
+                            <li><strong>Airports:</strong> Click to reveal extensive data including runways, frequencies, METAR, TAF, and listen to Live Audio ATIS.</li>
+                            <li><strong>Waypoints/Holds:</strong> Click any navigation point to view details or teleport directly to it.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Customizable Map Styles:</strong> Choose from multiple map base layers to suit your flying environment.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>🌤️ Immersive Aviation Weather Visualizations</h3>
+                <ul>
+                    <li><strong>Animated Weather Layers:</strong> Watch live weather render directly on your map, including animated rainfall effects.</li>
+                    <li><strong>Global Meteorological Data:</strong> Overlay real-time Wind, Temperature, Precipitation, SIGMETs, and breathtaking Aurora displays across the globe.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>👨‍✈️ Virtual Crew & Performance Operations</h3>
+                <ul>
+                    <li><strong>Interactive Virtual Co-Pilot:</strong> Execute real-world checklists for every flight phase (Pre-flight, After Takeoff, etc.). The virtual pilot actively reads and shares the checklist workflow with you, replicating a true multi-crew environment.</li>
+                    <li><strong>Audio Briefings:</strong> Receive professional departure and arrival briefings from your virtual pilot.</li>
+                    <li><strong>Precision Performance Calculator:</strong> Generate highly accurate Takeoff and Landing performance calculations tailored to your aircraft.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>✈️ Total Aircraft & Ground Control</h3>
+                <ul>
+                    <li><strong>Ground Handling System:</strong> Request and steer the pushback tug manually, operate the jetway, and control all aircraft doors seamlessly.</li>
+                    <li><strong>Advanced Load Manager:</strong> Instantly modify passenger loads, cargo weights, and fuel levels.</li>
+                    <li><strong>Failure Management:</strong> Trigger and manage a comprehensive suite of aircraft failures for intense training scenarios.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>📱 Smart Electronic Flight Bag (EFB) & AI Integration</h3>
+                <ul>
+                    <li><strong>SimBrief Integration:</strong> Automatically load your flight plan, view route summaries, departure/arrival NOTAMs, and listen to Audio ATIS for both your origin and destination.</li>
+                    <li><strong>AI-Powered NOTAMs:</strong> Say goodbye to deciphering complex text. Our built-in AI analyzes all airport NOTAMs, provides a clean text summary, and can read it aloud to you via voice synthesis.</li>
+                    <li><strong>Integrated EFB iPad:</strong> Search any airport worldwide to instantly pull METAR, TAF, and categorized NOTAM statuses.</li>
+                    <li><strong>Aviation Scratchpads:</strong> Four dedicated digital scratchpad templates designed specifically for Takeoff, Landing, Holding, and CRAFT clearances.</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SETUP GUIDE SECTION -->
+    <section id="setup" class="setup-section">
+        <h2 class="section-title">MSFS Connection Guide</h2>
+        <p class="setup-subtitle">A clean, step-by-step guide to connecting the SimulatorStation mobile app with Microsoft Flight Simulator on your PC.</p>
+
+        <!-- Before you begin -->
+        <div class="setup-alert">
+            <h3>Before you begin</h3>
+            <ul>
+                <li>Have Microsoft Flight Simulator running on your PC.</li>
+                <li>Keep your mobile device and PC on the same Wi-Fi network.</li>
+                <li>If you use SimBrief, IVAO, or VATSIM, have your relevant ID ready.</li>
+            </ul>
+        </div>
+
+        <!-- Step 1 -->
+        <div class="setup-step">
+            <span class="step-label">Step 1</span>
+            <h3>Download the Bridge File</h3>
+            <p>Download the SimulatorStation Bridge ZIP file to your Windows PC. Extract the downloaded ZIP folder before continuing.</p>
+            
+            <a href="https://www.google.com/url?sa=D&q=https://drive.google.com/uc%3Fexport%3Ddownload%26id%3D1TU-IHfJPU5va272GTa0hLoMig_TDUeNf&ust=1789935360000000&usg=AOvVaw281ZqI52fKqaHgDP6tmxwu&hl=ar" target="_blank" class="btn btn-primary" style="margin: 15px 0;">DOWNLOAD BRIDGE FILE</a>
+            
+            <p>After downloading: Open the ZIP file &rarr; extract it to a convenient location on your PC &rarr; open the extracted folder.</p>
+            
+            <div class="code-box">
+                The file you need to run is:
+                <strong>SimulatorStation_Bridge.v1.exe</strong>
+            </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="setup-step">
+            <span class="step-label">Step 2</span>
+            <h3>Run the Bridge Server</h3>
+            <p>Open the extracted folder and double-click <strong>SimulatorStation_Bridge.v1.exe</strong> to start the bridge server.</p>
+            
+            <ul class="custom-list">
+                <li><strong>01 Open the extracted folder</strong> Locate the Bridge server files.</li>
+                <li><strong>02 Run SimulatorStation_Bridge.v1.exe</strong> Double-click the executable.</li>
+                <li><strong>03 Keep the black command window open</strong> Leave it running in the background while you fly.</li>
+            </ul>
+
+            <div class="important-note">
+                <strong>Important:</strong> The bridge server must remain open in the background to maintain communication between MSFS and the mobile app.
+                <br><br>
+                Next, make sure your phone/tablet and the PC are connected to the same Wi-Fi network.
+            </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="setup-step">
+            <span class="step-label">Step 3</span>
+            <h3>Connect & Verify</h3>
+            <p>Open the Simulator Station app on your device. Once the app detects the bridge server running on your PC, the red "Disconnected" banner at the top of the screen will automatically turn green and display "Connected".</p>
+            
+            <img src="https://raw.githubusercontent.com/osamanabel1999/App-assets/refs/heads/main/46AB4E4F-D38B-435F-9730-D3C5EFCB39BD.png" alt="Connected Success Banner" class="success-img">
+        </div>
+
+    </section>
+
+    <!-- APP WALKTHROUGH SECTION -->
+    <section id="walkthrough" class="setup-section">
+        <h2 class="section-title">App Walkthrough & Features</h2>
+        <p class="setup-subtitle">A detailed visual guide exploring Simulator Station's core control screens.</p>
+
+        <!-- Walkthrough: Connection -->
+        <div class="setup-step">
+            <span class="step-label">App Setup</span>
+            <h3>Connect Your Accounts</h3>
+            <p>Input your PC's IP Address to establish the local connection. You can also securely enter your <strong>SimBrief ID</strong> and your <strong>IVAO / VATSIM ID</strong> to enable live weather, flight plans, and network traffic within the app. Click <strong>Connect</strong> when ready.</p>
+            <img src="ضع_لينك_الصورة_هنا" alt="Connection Setup Screen" class="success-img">
+        </div>
+
+        <!-- Walkthrough: Position & Charts -->
+        <div class="setup-step">
+            <span class="step-label">Positioning & Navigation</span>
+            <h3>Dynamic Control & World Exploration</h3>
+            
+            <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">1. Dynamic Approach Setup</strong>
+            Type any airport ICAO code to instantly load its operational data. From the <strong>Runway</strong> tab, you can select your active runway, dial in your target airspeed, and click on any visual approach pattern (like Left Base, Right Downwind, or a 15nm final). Your aircraft will instantly teleport and align perfectly.</p>
+            <img src="ضع_لينك_الصورة_هنا" alt="Position Screen" class="success-img" style="margin-bottom: 30px;">
+
+            <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">2. Interactive Airport Charts</strong>
+            Switch over to the <strong>Airport Chart</strong> tab to view a meticulously detailed, fully drawn layout of the airport, displaying all runways and taxiways. Spot an aircraft icon at a specific gate? Simply tap it, and your plane will instantly spawn perfectly parked at that exact gate.</p>
+            <img src="ضع_لينك_الصورة_هنا" alt="Airport Chart Screen" class="success-img" style="margin-bottom: 30px;">
+
+            <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">3. Advanced Navaids Teleport</strong>
+            Search for any navigational aid (VOR or NDB) worldwide to instantly pull up its frequency, elevation, and precise coordinates. Dial in your desired radial, heading, distance, altitude, and speed, then click <strong>Teleport</strong>. Your aircraft will instantly spawn at the exact pinpointed location in the sky, fully configured and ready to fly.</p>
+            <img src="ضع_لينك_الصورة_هنا" alt="Navaids Teleport Screen" class="success-img" style="margin-bottom: 30px;">
+
+            <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">4. Scenic World Tour</strong>
+            Explore over 30 of the world's most iconic and breathtaking landmarks. Simply set your desired target speed, select a destination like the Great Pyramids or the Eiffel Tower, and click <strong>FLY HERE</strong>. The app instantly teleports your aircraft to enjoy stunning scenic views without the hassle of planning a full route.</p>
+            <img src="ضع_لينك_الصورة_هنا" alt="World Tour Screen" class="success-img">
+        </div>
+
+        <!-- Walkthrough: Interactive Map & Global Radar -->
+        <div class="setup-step">
+            <span class="step-label">Navigation & Radar</span>
+            <h3>Interactive Map & Live Teleportation</h3>
+
+            <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">1. Universal Search & Smart Filters</strong>
+            Use the top search bar to instantly locate any ICAO, Callsign, Navaid, or active flight. The comprehensive left menu allows you to toggle live VATSIM/IVAO traffic, Airports, Waypoints, Airways, Holds, and your exact Flight Path on or off to perfectly declutter your view.</p>
+            <img src="ضع_لينك_الصورة_هنا" alt="Map Search and Filters" class="success-img" style="margin-bottom: 30px;">
+
+            <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">2. Dynamic Weather & Map Layers</strong>
+            Click the layer icon on the right to completely transform your map environment. Switch between Dark and Satellite views, and instantly overlay real-time aviation weather data including Precipitation, Rain, Temp, Wind, Airway Segments, and stunning Aurora visuals.</p>
+            <img src="ضع_لينك_الصورة_هنا" alt="Map Weather Layers" class="success-img" style="margin-bottom: 30px;">
+
+            <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">3. Instant Map Teleportation</strong>
+            Want to practice a specific scenario? Click <strong>Teleport</strong> from the left menu, tap absolutely anywhere on the map, enter your desired Altitude, Speed, and Heading, and hit <strong>Send Teleport</strong>. Your aircraft will seamlessly spawn at those exact coordinates in a fraction of a second.</p>
+            <img src="ضع_لينك_الصورة_هنا" alt="Map Teleportation Settings" class="success-img" style="margin-bottom: 30px;">
+
+            <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">4. Interactive Navaids</strong>
+            Tap any VOR or NDB on the map to pull up its exact frequency, elevation, power range, and coordinates. With a single click on <strong>Teleport To Navaid</strong>, you can instantly position your aircraft directly over the station.</p>
+            <img src="ضع_لينك_الصورة_هنا" alt="Interactive Navaids on Map" class="success-img" style="margin-bottom: 30px;">
+
+            <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">5. Ultimate Airport Database</strong>
+            Click any airport icon on the map to unlock a massive database. Instantly access real-world ATC frequencies, highly detailed runway specs (length, width, surface type, lighting, bearing), plus live METAR, TAF, and ATIS (text and voice) for complete situational awareness.</p>
+            <img src="ضع_لينك_الصورة_هنا" alt="Airport Database and Runways" class="success-img">
+        </div>
+
+        <!-- Walkthrough: Flight Plan -->
+        <div class="setup-step">
+            <span class="step-label">Flight Plan</span>
+            <h3>Live SimBrief Integration</h3>
+            <p>No need to manually type your route. The app automatically fetches data from your most recent SimBrief flight plan. You get instant access to your Departure and Arrival airports, block times, cruising altitude, live METAR, TAF, and complete NOTAMs data in a clean, scrollable view.</p>
+            <img src="ضع_لينك_الصورة_هنا" alt="Flight Plan Data" class="success-img">
+        </div>
+
+        <!-- Walkthrough: Pushback -->
+        <div class="setup-step">
+            <span class="step-label">Ground Operations</span>
+            <h3>Interactive Pushback Control</h3>
+            <p>Take complete command of ground operations without ever touching your PC. Connect the tug and use intuitive one-touch controls to push back straight, or precisely turn the tail left or right to align with the taxiway.</p>
+            <img src="ضع_لينك_الصورة_هنا" alt="Pushback Control Screen" class="success-img">
+        </div>
+
+        <!-- Walkthrough: Performance Calculation -->
+        <div class="setup-step">
+            <span class="step-label">Flight Operations</span>
+            <h3>Precision Performance Calculator (T/O & LDG)</h3>
+            <p>Simulator Station features a highly accurate, airline-grade performance calculator that meticulously computes your Take-Off and Landing data based on real-world physics and conditions.</p>
+
+            <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">1. Take-Off Data Entry</strong>
+            Input your specific aircraft type, gross weight, configuration, anti-ice status, and exact runway conditions (length, slope, heading, elevation). Add precise meteorological data including QNH, exact temperature, and wind direction/speed to ensure maximum realism and safety before departure.</p>
+            <img src="ضع_لينك_الصورة_هنا" alt="Take-Off Data Entry Screen" class="success-img" style="margin-bottom: 30px;">
+
+            <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">2. Landing Data Entry (LDA)</strong>
+            Prepare for a safe arrival by setting your landing weight, Autobrake settings, and reverser operational status. Combine this with the destination airport's elevation, runway condition, and live weather to dynamically calculate your required stopping margins.</p>
+            <img src="ضع_لينك_الصورة_هنا" alt="Landing Data Entry Screen" class="success-img" style="margin-bottom: 30px;">
+
+            <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">3. Highly Accurate T/O Results & V-Speeds</strong>
+            Hit calculate to generate impeccably precise V-speeds (V1, VR, V2) and Flex Temperatures. The app also determines your precise flap and slat retraction speeds (F, S, Green Dot). Best of all, the intuitive visual runway diagram displays exactly where on the runway your aircraft will hit these critical speeds relative to the total runway length (TORA).</p>
+            <img src="ضع_لينك_الصورة_هنا" alt="Take-Off Results Screen" class="success-img" style="margin-bottom: 30px;">
+
+            <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">4. Precise Landing Distances & Overrun Warnings</strong>
+            Review your precise Approach Speed (VAPP) and Minimum Selectable Speed (VLS). The calculator actively compares your <i>Actual Distance</i> against the <i>Factored Distance</i> to tell you exactly how much runway will remain. If the runway is too short for your weight and weather conditions, a dynamic red <strong>OVERRUN WARNING</strong> ensures you abort the approach.</p>
+            <img src="ضع_لينك_الصورة_هنا" alt="Landing Results Screen" class="success-img">
+        </div>
+
+        <!-- Walkthrough: Virtual Crew & Audio Briefings -->
+        <div class="setup-step">
+            <span class="step-label">Virtual Crew</span>
+            <h3>Interactive Checklists & Audio Briefings</h3>
+            <p>Elevate your simulation to a professional multi-crew environment. Simulator Station introduces a fully integrated Virtual Co-Pilot to assist you throughout every phase of your flight.</p>
+
+            <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">1. Interactive Voice Checklists</strong>
+            Select your aircraft type (e.g., A320 or B737) and choose your current phase of flight (Before Start, Taxi, Line Up, Approach, etc.). The Virtual Pilot will actively read the checklist aloud and execute it with you step-by-step, perfectly mirroring real-world cockpit procedures and ensuring no critical steps are missed.</p>
+            <img src="ضع_لينك_الصورة_هنا" alt="Interactive Checklist Screen" class="success-img" style="margin-bottom: 30px;">
+
+            <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">2. Professional Audio Briefings</strong>
+            The app dynamically gathers your runway data, precise Take-Off/Landing speeds, and live weather conditions to compile a comprehensive brief. Simply tap <strong>START AUDIO</strong>, and your Virtual Co-Pilot will deliver a complete, professional, and immersive audio briefing for either your departure or arrival, exactly as you would hear on a real flight deck.</p>
+            <img src="ضع_لينك_الصورة_هنا" alt="Audio Briefing Screen" class="success-img">
+        </div>
+
+        <!-- Walkthrough: Smart EFB -->
+        <div class="setup-step">
+            <span class="step-label">Smart EFB</span>
+            <h3>Integrated Electronic Flight Bag (iPad)</h3>
+            <p>Simulator Station comes equipped with a fully functional, built-in Electronic Flight Bag (EFB) that mirrors a real-world cockpit tablet. The EFB gives you instant access to four specialized aviation applications: Airport WX, WX Charts, NOTAMs, and a digital Scratchpad.</p>
+            <img src="ضع_لينك_الصورة_هنا" alt="EFB Home Screen" class="success-img" style="margin-bottom: 30px;">
+
+            <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">1. Aviation Weather Charts (WX Charts)</strong>
+            Generate highly detailed, real-world meteorological charts on the fly. Simply select your desired Chart Type (such as Upper Air Wind/Temp or SIGWX), choose your geographical Region, and set your specific Parameters (Forecast Time and Flight Level). Click <strong>View Weather Chart</strong> to instantly render professional aviation weather overlays for your route.</p>
+            <img src="ضع_لينك_الصورة_هنا" alt="WX Charts Screen" class="success-img" style="margin-bottom: 30px;">
+
+            <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">2. Global NOTAMs Database</strong>
+            Search for any airport ICAO code worldwide to instantly pull up its active NOTAMs. The app intelligently categorizes the data (All, Aerodrome, Nav, Obstacle) and clearly displays the effective times, expiration times, and active status. You can easily read the detailed text and even copy it directly to your clipboard for flight planning.</p>
+            <img src="ضع_لينك_الصورة_هنا" alt="NOTAMs Screen" class="success-img" style="margin-bottom: 30px;">
+
+            <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">3. Authentic Digital Scratchpad</strong>
+            Ditch the pen and paper. The EFB includes a highly authentic digital Scratchpad featuring four dedicated, real-world templates: <strong>Takeoff</strong>, <strong>Landing</strong>, <strong>Holding</strong>, and <strong>CRAFT</strong> (Clearances). These templates are meticulously designed to mirror actual pilot notes, allowing you to seamlessly jot down and reference critical V-speeds, altitudes, and ATC clearances dynamically during your flight.</p>
+        </div>
+
+        <!-- Walkthrough: Advanced Load Manager -->
+        <div class="setup-step">
+            <span class="step-label">Aircraft Management</span>
+            <h3>Advanced Load & Fuel Manager</h3>
+            <p>Take absolute control over your aircraft's weight and balance in real-time. Use the intuitive interactive sliders to adjust the fuel quantity (0% to 100%) in your Left, Center, and Right tanks instantly.</p>
+            <p>You can also perfectly manage your payload by entering exact weights for the Co-Pilot, Rear Passenger Seats, Baggage Hold, and Extra Cargo. Perfect your performance calculations without ever opening the simulator's default menus!</p>
+            <img src="ضع_لينك_الصورة_هنا" alt="Load and Fuel Management" class="success-img">
+        </div>
+
+        <!-- Walkthrough: Failures -->
+        <div class="setup-step">
+            <span class="step-label">Training & Emergencies</span>
+            <h3>Comprehensive Failures System</h3>
+            <p>Ready for the ultimate challenge? Simulator Station features a highly advanced, study-level failure management system designed strictly for hardcore simmers and real-world training! Trigger countless realistic emergencies categorized perfectly by aircraft systems (ENGINE, APU, HYDRAULIC, ELEC, FLT CTRL, and more).</p>
+            <p>You can force an instant catastrophic failure, like an Engine Fire or a Compressor Stall, or set a precise timer for a surprise emergency mid-flight to truly test your airmanship. Things got too intense? Simply hit the incredibly powerful <strong>FIX ALL</strong> button to instantly repair the aircraft and return all systems to a 100% healthy state! This is the ultimate tool to master emergency procedures.</p>
+            <img src="ضع_لينك_الصورة_هنا" alt="Failures System" class="success-img">
+        </div>
+
+        <!-- Walkthrough: Settings -->
+        <div class="setup-step">
+            <span class="step-label">Configuration</span>
+            <h3>Quick Settings & Account Options</h3>
+            <p>Need to update your network or accounts? Head over to the Settings page to quickly modify your PC's IP Address, SimBrief ID, or VATSIM/IVAO IDs on the fly. Just tap on any field to instantly update your connection details dynamically without having to restart the application.</p>
+            <img src="ضع_لينك_الصورة_هنا" alt="Settings Page" class="success-img">
+        </div>
+
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section id="faq" class="setup-section">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="setup-subtitle">Quick answers to the most common questions about Simulator Station.</p>
+
+        <div class="faq-item">
+            <h4>Why is the app showing "Disconnected" and refusing to connect?</h4>
+            <p>Ensure that the Bridge server is actively running on your PC and that your mobile device and PC are on the exact same Wi-Fi network. Check that your Windows Firewall isn't blocking the connection. <strong>Crucial Step:</strong> Verify that you entered the correct PC IP Address in the app (local IPs can change upon router restarts) and ensure you are running the latest version of the Bridge.</p>
+        </div>
+
+        <div class="faq-item">
+            <h4>Does the app support the new MSFS 2024?</h4>
+            <p>Yes, absolutely! Simulator Station is built and optimized to fully support both MSFS 2020 and the newly released MSFS 2024 with maximum efficiency.</p>
+        </div>
+
+        <div class="faq-item">
+            <h4>Why isn't my flight plan loading from SimBrief?</h4>
+            <p>Ensure you have entered your correct SimBrief ID on the app's Connection page. Most importantly, you must click "Generate Flight" on the SimBrief website for your current flight before opening the Flight Plan tab in the app.</p>
+        </div>
+
+        <div class="faq-item">
+            <h4>Does the map display live VATSIM and IVAO traffic?</h4>
+            <p>Yes! Once you enter your VATSIM or IVAO ID on the Connection page, you can instantly view live network traffic. You can seamlessly toggle the traffic display on or off directly from the map's left-hand filter menu.</p>
+        </div>
+
+        <div class="faq-item">
+            <h4>Can I use the Teleport feature while mid-air?</h4>
+            <p>Yes, mid-air teleportation is fully supported. However, always ensure you configure an appropriate target Altitude and target Airspeed in the Teleport settings before executing the jump to prevent your aircraft from stalling upon arrival.</p>
+        </div>
+    </section>
+
+</body>
+</html>
