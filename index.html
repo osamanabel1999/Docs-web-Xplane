@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulator Station - MSFS Docs</title>
+    <title>Simulator Station - X-Plane Docs</title>
     <!-- Google Fonts for a clean, modern look -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
@@ -378,6 +378,26 @@
             margin-top: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
+        
+        /* Video Container for responsive Youtube embed */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin-top: 25px;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
 
         /* ==========================================
            FAQ SECTION
@@ -465,7 +485,7 @@
             Simulator Station Docs
         </div>
         <div class="nav-links">
-            <a href="#" class="active">MSFS Home</a>
+            <a href="#" class="active">Home</a>
             <a href="#features">Features</a>
             <a href="#setup">Installation & Connection</a>
             <a href="#walkthrough">Walkthrough</a>
@@ -475,9 +495,9 @@
 
     <!-- HERO SECTION -->
     <header class="hero">
-        <div class="msfs-badge">Fully Supports MSFS 2020 & MSFS 2024</div>
+        <div class="msfs-badge">Fully Supports X-Plane</div>
         <h1>The Ultimate Control Hub</h1>
-        <p>Elevate your Microsoft Flight Simulator experience with precision aircraft repositioning, live interactive radar, virtual crew operations, and a fully integrated smart EFB.</p>
+        <p>Elevate your flight simulator experience with precision aircraft repositioning, live interactive radar, virtual crew operations, and a fully integrated smart EFB.</p>
         
         <div class="hero-actions">
             <a href="#features" class="btn btn-primary">Explore Features</a>
@@ -485,7 +505,7 @@
         </div>
 
         <div class="app-showcase">
-            <img src="https://raw.githubusercontent.com/osamanabel1999/App-assets/refs/heads/main/0B235E9F-F201-4F3D-9427-B0C9F254C522.png" alt="Simulator Station Interface">
+            <img src="https://raw.githubusercontent.com/osamanabel1999/Sim-app-Assests/refs/heads/main/IMG_3793.png" alt="Simulator Station Interface">
         </div>
     </header>
 
@@ -560,63 +580,42 @@
         </div>
     </section>
 
-    <!-- SETUP GUIDE SECTION -->
+    <!-- SETUP GUIDE SECTION (MODIFIED FOR X-PLANE) -->
     <section id="setup" class="setup-section">
-        <h2 class="section-title">MSFS Connection Guide</h2>
-        <p class="setup-subtitle">A clean, step-by-step guide to connecting the SimulatorStation mobile app with Microsoft Flight Simulator on your PC.</p>
+        <h2 class="section-title">X-Plane Connection Guide</h2>
+        <p class="setup-subtitle">Follow these exact steps to connect your device to X-Plane and gain full control.</p>
 
         <!-- Before you begin -->
         <div class="setup-alert">
             <h3>Before you begin</h3>
             <ul>
-                <li>Have Microsoft Flight Simulator running on your PC.</li>
-                <li>Keep your mobile device and PC on the same Wi-Fi network.</li>
+                <li>Have X-Plane installed on your PC.</li>
+                <li>Keep your mobile device (iPad, Phone) and PC on the same Wi-Fi network.</li>
                 <li>If you use SimBrief, IVAO, or VATSIM, have your relevant ID ready.</li>
             </ul>
         </div>
 
-        <!-- Step 1 -->
         <div class="setup-step">
-            <span class="step-label">Step 1</span>
-            <h3>Download the Bridge File</h3>
-            <p>Download the SimulatorStation Bridge ZIP file to your Windows PC. Extract the downloaded ZIP folder before continuing.</p>
-            
-            <a href="https://www.google.com/url?sa=D&q=https://drive.google.com/uc%3Fexport%3Ddownload%26id%3D1TU-IHfJPU5va272GTa0hLoMig_TDUeNf&ust=1789935360000000&usg=AOvVaw281ZqI52fKqaHgDP6tmxwu&hl=ar" target="_blank" class="btn btn-primary" style="margin: 15px 0;">DOWNLOAD BRIDGE FILE</a>
-            
-            <p>After downloading: Open the ZIP file &rarr; extract it to a convenient location on your PC &rarr; open the extracted folder.</p>
-            
-            <div class="code-box">
-                The file you need to run is:
-                <strong>SimulatorStation_Bridge.v1.exe</strong>
-            </div>
-        </div>
-
-        <!-- Step 2 -->
-        <div class="setup-step">
-            <span class="step-label">Step 2</span>
-            <h3>Run the Bridge Server</h3>
-            <p>Open the extracted folder and double-click <strong>SimulatorStation_Bridge.v1.exe</strong> to start the bridge server.</p>
+            <span class="step-label">Step-by-Step Setup</span>
+            <h3>How to Connect to X-Plane</h3>
+            <p>To connect your device to the simulator, follow these exact steps as explained in the video below:</p>
             
             <ul class="custom-list">
-                <li><strong>01 Open the extracted folder</strong> Locate the Bridge server files.</li>
-                <li><strong>02 Run SimulatorStation_Bridge.v1.exe</strong> Double-click the executable.</li>
-                <li><strong>03 Keep the black command window open</strong> Leave it running in the background while you fly.</li>
+                <li><strong>01 Install the Plugin</strong> Download the WebFMC plugin and place it into the plugins folder located inside your X-Plane installation directory on your PC.</li>
+                <li><strong>02 Configure the App</strong> Open the Simulator Station app on your device (e.g., iPad) and enter your PC's IP address, your SimBrief ID, and your IVAO or VATSIM ID.</li>
+                <li><strong>03 Configure X-Plane</strong> Go to the "Data Output" settings inside X-Plane on your PC.</li>
+                <li><strong>04 Input IP & Port</strong> Enter the IP address of the iPad or device running the Simulator Station app, and ensure the UDP port is set to <strong>49000</strong>.</li>
+                <li><strong>05 Select Data Output</strong> In X-Plane Data Output settings, check the indices: <strong>3, 17, 20, 21</strong>.</li>
             </ul>
 
             <div class="important-note">
-                <strong>Important:</strong> The bridge server must remain open in the background to maintain communication between MSFS and the mobile app.
-                <br><br>
-                Next, make sure your phone/tablet and the PC are connected to the same Wi-Fi network.
+                Once these steps are completed, your application will be successfully connected and able to control or receive data from X-Plane.
             </div>
-        </div>
 
-        <!-- Step 3 -->
-        <div class="setup-step">
-            <span class="step-label">Step 3</span>
-            <h3>Connect & Verify</h3>
-            <p>Open the Simulator Station app on your device. Once the app detects the bridge server running on your PC, the red "Disconnected" banner at the top of the screen will automatically turn green and display "Connected".</p>
-            
-            <img src="https://raw.githubusercontent.com/osamanabel1999/App-assets/refs/heads/main/46AB4E4F-D38B-435F-9730-D3C5EFCB39BD.png" alt="Connected Success Banner" class="success-img">
+            <!-- YouTube Video Embed -->
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/ySdnK7DPZPU?si=439GB0pwWFr917C-" title="How to Connect Simulator Station to X-Plane" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
         </div>
 
     </section>
@@ -631,7 +630,7 @@
             <span class="step-label">App Setup</span>
             <h3>Connect Your Accounts</h3>
             <p>Input your PC's IP Address to establish the local connection. You can also securely enter your <strong>SimBrief ID</strong> and your <strong>IVAO / VATSIM ID</strong> to enable live weather, flight plans, and network traffic within the app. Click <strong>Connect</strong> when ready.</p>
-            <img src="ضع_لينك_الصورة_هنا" alt="Connection Setup Screen" class="success-img">
+            <img src="https://raw.githubusercontent.com/osamanabel1999/Sim-app-Assests/refs/heads/main/IMG_3769.png" alt="Connection Setup Screen" class="success-img">
         </div>
 
         <!-- Walkthrough: Position & Charts -->
@@ -641,19 +640,19 @@
             
             <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">1. Dynamic Approach Setup</strong>
             Type any airport ICAO code to instantly load its operational data. From the <strong>Runway</strong> tab, you can select your active runway, dial in your target airspeed, and click on any visual approach pattern (like Left Base, Right Downwind, or a 15nm final). Your aircraft will instantly teleport and align perfectly.</p>
-            <img src="ضع_لينك_الصورة_هنا" alt="Position Screen" class="success-img" style="margin-bottom: 30px;">
+            <img src="https://raw.githubusercontent.com/osamanabel1999/Sim-app-Assests/refs/heads/main/IMG_3770.png" alt="Position Screen" class="success-img" style="margin-bottom: 30px;">
 
             <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">2. Interactive Airport Charts</strong>
             Switch over to the <strong>Airport Chart</strong> tab to view a meticulously detailed, fully drawn layout of the airport, displaying all runways and taxiways. Spot an aircraft icon at a specific gate? Simply tap it, and your plane will instantly spawn perfectly parked at that exact gate.</p>
-            <img src="ضع_لينك_الصورة_هنا" alt="Airport Chart Screen" class="success-img" style="margin-bottom: 30px;">
+            <img src="https://raw.githubusercontent.com/osamanabel1999/Sim-app-Assests/refs/heads/main/IMG_3771.png" alt="Airport Chart Screen" class="success-img" style="margin-bottom: 30px;">
 
             <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">3. Advanced Navaids Teleport</strong>
             Search for any navigational aid (VOR or NDB) worldwide to instantly pull up its frequency, elevation, and precise coordinates. Dial in your desired radial, heading, distance, altitude, and speed, then click <strong>Teleport</strong>. Your aircraft will instantly spawn at the exact pinpointed location in the sky, fully configured and ready to fly.</p>
-            <img src="ضع_لينك_الصورة_هنا" alt="Navaids Teleport Screen" class="success-img" style="margin-bottom: 30px;">
+            <img src="https://raw.githubusercontent.com/osamanabel1999/Sim-app-Assests/refs/heads/main/IMG_3772.png" alt="Navaids Teleport Screen" class="success-img" style="margin-bottom: 30px;">
 
             <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">4. Scenic World Tour</strong>
             Explore over 30 of the world's most iconic and breathtaking landmarks. Simply set your desired target speed, select a destination like the Great Pyramids or the Eiffel Tower, and click <strong>FLY HERE</strong>. The app instantly teleports your aircraft to enjoy stunning scenic views without the hassle of planning a full route.</p>
-            <img src="ضع_لينك_الصورة_هنا" alt="World Tour Screen" class="success-img">
+            <img src="https://raw.githubusercontent.com/osamanabel1999/Sim-app-Assests/refs/heads/main/IMG_3794.png" alt="World Tour Screen" class="success-img">
         </div>
 
         <!-- Walkthrough: Interactive Map & Global Radar -->
@@ -663,23 +662,23 @@
 
             <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">1. Universal Search & Smart Filters</strong>
             Use the top search bar to instantly locate any ICAO, Callsign, Navaid, or active flight. The comprehensive left menu allows you to toggle live VATSIM/IVAO traffic, Airports, Waypoints, Airways, Holds, and your exact Flight Path on or off to perfectly declutter your view.</p>
-            <img src="ضع_لينك_الصورة_هنا" alt="Map Search and Filters" class="success-img" style="margin-bottom: 30px;">
+            <img src="https://raw.githubusercontent.com/osamanabel1999/Sim-app-Assests/refs/heads/main/IMG_3797.png" alt="Map Search and Filters" class="success-img" style="margin-bottom: 30px;">
 
             <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">2. Dynamic Weather & Map Layers</strong>
             Click the layer icon on the right to completely transform your map environment. Switch between Dark and Satellite views, and instantly overlay real-time aviation weather data including Precipitation, Rain, Temp, Wind, Airway Segments, and stunning Aurora visuals.</p>
-            <img src="ضع_لينك_الصورة_هنا" alt="Map Weather Layers" class="success-img" style="margin-bottom: 30px;">
+            <img src="https://raw.githubusercontent.com/osamanabel1999/Sim-app-Assests/refs/heads/main/IMG_3799.png" alt="Map Weather Layers" class="success-img" style="margin-bottom: 30px;">
 
             <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">3. Instant Map Teleportation</strong>
             Want to practice a specific scenario? Click <strong>Teleport</strong> from the left menu, tap absolutely anywhere on the map, enter your desired Altitude, Speed, and Heading, and hit <strong>Send Teleport</strong>. Your aircraft will seamlessly spawn at those exact coordinates in a fraction of a second.</p>
-            <img src="ضع_لينك_الصورة_هنا" alt="Map Teleportation Settings" class="success-img" style="margin-bottom: 30px;">
+            <img src="https://raw.githubusercontent.com/osamanabel1999/Sim-app-Assests/refs/heads/main/IMG_3800.png" alt="Map Teleportation Settings" class="success-img" style="margin-bottom: 30px;">
 
             <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">4. Interactive Navaids</strong>
             Tap any VOR or NDB on the map to pull up its exact frequency, elevation, power range, and coordinates. With a single click on <strong>Teleport To Navaid</strong>, you can instantly position your aircraft directly over the station.</p>
-            <img src="ضع_لينك_الصورة_هنا" alt="Interactive Navaids on Map" class="success-img" style="margin-bottom: 30px;">
+            <img src="https://raw.githubusercontent.com/osamanabel1999/Sim-app-Assests/refs/heads/main/IMG_3801.png" alt="Interactive Navaids on Map" class="success-img" style="margin-bottom: 30px;">
 
             <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">5. Ultimate Airport Database</strong>
             Click any airport icon on the map to unlock a massive database. Instantly access real-world ATC frequencies, highly detailed runway specs (length, width, surface type, lighting, bearing), plus live METAR, TAF, and ATIS (text and voice) for complete situational awareness.</p>
-            <img src="ضع_لينك_الصورة_هنا" alt="Airport Database and Runways" class="success-img">
+            <img src="https://raw.githubusercontent.com/osamanabel1999/Sim-app-Assests/refs/heads/main/IMG_3777.png" alt="Airport Database and Runways" class="success-img">
         </div>
 
         <!-- Walkthrough: Flight Plan -->
@@ -687,7 +686,7 @@
             <span class="step-label">Flight Plan</span>
             <h3>Live SimBrief Integration</h3>
             <p>No need to manually type your route. The app automatically fetches data from your most recent SimBrief flight plan. You get instant access to your Departure and Arrival airports, block times, cruising altitude, live METAR, TAF, and complete NOTAMs data in a clean, scrollable view.</p>
-            <img src="ضع_لينك_الصورة_هنا" alt="Flight Plan Data" class="success-img">
+            <img src="https://raw.githubusercontent.com/osamanabel1999/Sim-app-Assests/refs/heads/main/IMG_3773.png" alt="Flight Plan Data" class="success-img">
         </div>
 
         <!-- Walkthrough: Pushback -->
@@ -695,7 +694,7 @@
             <span class="step-label">Ground Operations</span>
             <h3>Interactive Pushback Control</h3>
             <p>Take complete command of ground operations without ever touching your PC. Connect the tug and use intuitive one-touch controls to push back straight, or precisely turn the tail left or right to align with the taxiway.</p>
-            <img src="ضع_لينك_الصورة_هنا" alt="Pushback Control Screen" class="success-img">
+            <img src="https://raw.githubusercontent.com/osamanabel1999/Sim-app-Assests/refs/heads/main/IMG_3775.png" alt="Pushback Control Screen" class="success-img">
         </div>
 
         <!-- Walkthrough: Performance Calculation -->
@@ -706,19 +705,19 @@
 
             <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">1. Take-Off Data Entry</strong>
             Input your specific aircraft type, gross weight, configuration, anti-ice status, and exact runway conditions (length, slope, heading, elevation). Add precise meteorological data including QNH, exact temperature, and wind direction/speed to ensure maximum realism and safety before departure.</p>
-            <img src="ضع_لينك_الصورة_هنا" alt="Take-Off Data Entry Screen" class="success-img" style="margin-bottom: 30px;">
+            <img src="https://raw.githubusercontent.com/osamanabel1999/Sim-app-Assests/refs/heads/main/IMG_3781.png" alt="Take-Off Data Entry Screen" class="success-img" style="margin-bottom: 30px;">
 
             <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">2. Landing Data Entry (LDA)</strong>
             Prepare for a safe arrival by setting your landing weight, Autobrake settings, and reverser operational status. Combine this with the destination airport's elevation, runway condition, and live weather to dynamically calculate your required stopping margins.</p>
-            <img src="ضع_لينك_الصورة_هنا" alt="Landing Data Entry Screen" class="success-img" style="margin-bottom: 30px;">
+            <img src="https://raw.githubusercontent.com/osamanabel1999/Sim-app-Assests/refs/heads/main/IMG_3796.png" alt="Landing Data Entry Screen" class="success-img" style="margin-bottom: 30px;">
 
             <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">3. Highly Accurate T/O Results & V-Speeds</strong>
             Hit calculate to generate impeccably precise V-speeds (V1, VR, V2) and Flex Temperatures. The app also determines your precise flap and slat retraction speeds (F, S, Green Dot). Best of all, the intuitive visual runway diagram displays exactly where on the runway your aircraft will hit these critical speeds relative to the total runway length (TORA).</p>
-            <img src="ضع_لينك_الصورة_هنا" alt="Take-Off Results Screen" class="success-img" style="margin-bottom: 30px;">
+            <img src="https://raw.githubusercontent.com/osamanabel1999/Sim-app-Assests/refs/heads/main/IMG_3782.png" alt="Take-Off Results Screen" class="success-img" style="margin-bottom: 30px;">
 
             <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">4. Precise Landing Distances & Overrun Warnings</strong>
             Review your precise Approach Speed (VAPP) and Minimum Selectable Speed (VLS). The calculator actively compares your <i>Actual Distance</i> against the <i>Factored Distance</i> to tell you exactly how much runway will remain. If the runway is too short for your weight and weather conditions, a dynamic red <strong>OVERRUN WARNING</strong> ensures you abort the approach.</p>
-            <img src="ضع_لينك_الصورة_هنا" alt="Landing Results Screen" class="success-img">
+            <img src="https://raw.githubusercontent.com/osamanabel1999/Sim-app-Assests/refs/heads/main/IMG_3795.png" alt="Landing Results Screen" class="success-img">
         </div>
 
         <!-- Walkthrough: Virtual Crew & Audio Briefings -->
@@ -729,11 +728,11 @@
 
             <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">1. Interactive Voice Checklists</strong>
             Select your aircraft type (e.g., A320 or B737) and choose your current phase of flight (Before Start, Taxi, Line Up, Approach, etc.). The Virtual Pilot will actively read the checklist aloud and execute it with you step-by-step, perfectly mirroring real-world cockpit procedures and ensuring no critical steps are missed.</p>
-            <img src="ضع_لينك_الصورة_هنا" alt="Interactive Checklist Screen" class="success-img" style="margin-bottom: 30px;">
+            <img src="https://raw.githubusercontent.com/osamanabel1999/Sim-app-Assests/refs/heads/main/IMG_3784.png" alt="Interactive Checklist Screen" class="success-img" style="margin-bottom: 30px;">
 
             <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">2. Professional Audio Briefings</strong>
             The app dynamically gathers your runway data, precise Take-Off/Landing speeds, and live weather conditions to compile a comprehensive brief. Simply tap <strong>START AUDIO</strong>, and your Virtual Co-Pilot will deliver a complete, professional, and immersive audio briefing for either your departure or arrival, exactly as you would hear on a real flight deck.</p>
-            <img src="ضع_لينك_الصورة_هنا" alt="Audio Briefing Screen" class="success-img">
+            <img src="https://raw.githubusercontent.com/osamanabel1999/Sim-app-Assests/refs/heads/main/IMG_3785.png" alt="Audio Briefing Screen" class="success-img">
         </div>
 
         <!-- Walkthrough: Smart EFB -->
@@ -741,15 +740,15 @@
             <span class="step-label">Smart EFB</span>
             <h3>Integrated Electronic Flight Bag (iPad)</h3>
             <p>Simulator Station comes equipped with a fully functional, built-in Electronic Flight Bag (EFB) that mirrors a real-world cockpit tablet. The EFB gives you instant access to four specialized aviation applications: Airport WX, WX Charts, NOTAMs, and a digital Scratchpad.</p>
-            <img src="ضع_لينك_الصورة_هنا" alt="EFB Home Screen" class="success-img" style="margin-bottom: 30px;">
+            <img src="https://raw.githubusercontent.com/osamanabel1999/Sim-app-Assests/refs/heads/main/IMG_3786.png" alt="EFB Home Screen" class="success-img" style="margin-bottom: 30px;">
 
             <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">1. Aviation Weather Charts (WX Charts)</strong>
             Generate highly detailed, real-world meteorological charts on the fly. Simply select your desired Chart Type (such as Upper Air Wind/Temp or SIGWX), choose your geographical Region, and set your specific Parameters (Forecast Time and Flight Level). Click <strong>View Weather Chart</strong> to instantly render professional aviation weather overlays for your route.</p>
-            <img src="ضع_لينك_الصورة_هنا" alt="WX Charts Screen" class="success-img" style="margin-bottom: 30px;">
+            <img src="https://raw.githubusercontent.com/osamanabel1999/Sim-app-Assests/refs/heads/main/IMG_3787.png" alt="WX Charts Screen" class="success-img" style="margin-bottom: 30px;">
 
             <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">2. Global NOTAMs Database</strong>
             Search for any airport ICAO code worldwide to instantly pull up its active NOTAMs. The app intelligently categorizes the data (All, Aerodrome, Nav, Obstacle) and clearly displays the effective times, expiration times, and active status. You can easily read the detailed text and even copy it directly to your clipboard for flight planning.</p>
-            <img src="ضع_لينك_الصورة_هنا" alt="NOTAMs Screen" class="success-img" style="margin-bottom: 30px;">
+            <img src="https://raw.githubusercontent.com/osamanabel1999/Sim-app-Assests/refs/heads/main/IMG_3789.png" alt="NOTAMs Screen" class="success-img" style="margin-bottom: 30px;">
 
             <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">3. Authentic Digital Scratchpad</strong>
             Ditch the pen and paper. The EFB includes a highly authentic digital Scratchpad featuring four dedicated, real-world templates: <strong>Takeoff</strong>, <strong>Landing</strong>, <strong>Holding</strong>, and <strong>CRAFT</strong> (Clearances). These templates are meticulously designed to mirror actual pilot notes, allowing you to seamlessly jot down and reference critical V-speeds, altitudes, and ATC clearances dynamically during your flight.</p>
@@ -761,7 +760,7 @@
             <h3>Advanced Load & Fuel Manager</h3>
             <p>Take absolute control over your aircraft's weight and balance in real-time. Use the intuitive interactive sliders to adjust the fuel quantity (0% to 100%) in your Left, Center, and Right tanks instantly.</p>
             <p>You can also perfectly manage your payload by entering exact weights for the Co-Pilot, Rear Passenger Seats, Baggage Hold, and Extra Cargo. Perfect your performance calculations without ever opening the simulator's default menus!</p>
-            <img src="ضع_لينك_الصورة_هنا" alt="Load and Fuel Management" class="success-img">
+            <img src="https://raw.githubusercontent.com/osamanabel1999/Sim-app-Assests/refs/heads/main/IMG_3790.png" alt="Load and Fuel Management" class="success-img">
         </div>
 
         <!-- Walkthrough: Failures -->
@@ -770,7 +769,7 @@
             <h3>Comprehensive Failures System</h3>
             <p>Ready for the ultimate challenge? Simulator Station features a highly advanced, study-level failure management system designed strictly for hardcore simmers and real-world training! Trigger countless realistic emergencies categorized perfectly by aircraft systems (ENGINE, APU, HYDRAULIC, ELEC, FLT CTRL, and more).</p>
             <p>You can force an instant catastrophic failure, like an Engine Fire or a Compressor Stall, or set a precise timer for a surprise emergency mid-flight to truly test your airmanship. Things got too intense? Simply hit the incredibly powerful <strong>FIX ALL</strong> button to instantly repair the aircraft and return all systems to a 100% healthy state! This is the ultimate tool to master emergency procedures.</p>
-            <img src="ضع_لينك_الصورة_هنا" alt="Failures System" class="success-img">
+            <img src="https://raw.githubusercontent.com/osamanabel1999/Sim-app-Assests/refs/heads/main/IMG_3791.png" alt="Failures System" class="success-img">
         </div>
 
         <!-- Walkthrough: Settings -->
@@ -778,7 +777,7 @@
             <span class="step-label">Configuration</span>
             <h3>Quick Settings & Account Options</h3>
             <p>Need to update your network or accounts? Head over to the Settings page to quickly modify your PC's IP Address, SimBrief ID, or VATSIM/IVAO IDs on the fly. Just tap on any field to instantly update your connection details dynamically without having to restart the application.</p>
-            <img src="ضع_لينك_الصورة_هنا" alt="Settings Page" class="success-img">
+            <img src="https://raw.githubusercontent.com/osamanabel1999/Sim-app-Assests/refs/heads/main/IMG_3792.png" alt="Settings Page" class="success-img">
         </div>
 
     </section>
@@ -789,13 +788,8 @@
         <p class="setup-subtitle">Quick answers to the most common questions about Simulator Station.</p>
 
         <div class="faq-item">
-            <h4>Why is the app showing "Disconnected" and refusing to connect?</h4>
-            <p>Ensure that the Bridge server is actively running on your PC and that your mobile device and PC are on the exact same Wi-Fi network. Check that your Windows Firewall isn't blocking the connection. <strong>Crucial Step:</strong> Verify that you entered the correct PC IP Address in the app (local IPs can change upon router restarts) and ensure you are running the latest version of the Bridge.</p>
-        </div>
-
-        <div class="faq-item">
-            <h4>Does the app support the new MSFS 2024?</h4>
-            <p>Yes, absolutely! Simulator Station is built and optimized to fully support both MSFS 2020 and the newly released MSFS 2024 with maximum efficiency.</p>
+            <h4>Why is the app refusing to connect to X-Plane?</h4>
+            <p>Ensure that both your device and your PC are on the exact same Wi-Fi network. Check the "Data Output" settings in X-Plane and confirm that you have entered the correct IP address of your mobile device, and that the UDP port is set strictly to 49000. Finally, ensure your Windows Firewall is not blocking X-Plane.</p>
         </div>
 
         <div class="faq-item">
