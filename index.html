@@ -741,7 +741,7 @@
         <div class="setup-step">
             <span class="step-label">Step 1</span>
             <h3>Download the Simulator Station Files</h3>
-            <p>Download the Simulator Station files ZIP to your Windows PC. These files include the necessary tools to establish the Instructor Operating Station connection for screen sharing.</p>
+            <p>Download the Simulator Station files ZIP to your Windows PC. The package contains seven X-Plane plugin folders for the new direct installation method, plus optional tools for Instructor Operating Station screen sharing.</p>
             
             <div class="code-box" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px;">
                 <strong id="filesLink" style="font-weight: normal; font-size: 0.95rem; word-break: break-all;">https://drive.google.com/drive/folders/1YsBM1cZVrXWPpPl8QIfHqTyHdsQTJfak?usp=sharing</strong>
@@ -752,9 +752,34 @@
             <p>After downloading, extract the ZIP file to a convenient location on your PC. Inside the extracted folder, you will find two main folders: <strong>MSFS</strong> and <strong>X-Plane</strong>. Since you are using X-Plane, open the <strong>X-Plane</strong> folder.</p>
         </div>
 
-        <!-- Step 2: Instructor Session Broadcast -->
+        <!-- Step 2: New X-Plane Plugin Installation -->
         <div class="setup-step">
             <span class="step-label">Step 2</span>
+            <h3>Install the 7 X-Plane Plugins</h3>
+            <p>Connecting Simulator Station to X-Plane is now easier than ever. Our new <strong>plugin-based connection method</strong> replaces the old manual X-Plane Data Output configuration. Simply copy the included plugins into your simulator. No manual X-Plane network setup is required.</p>
+
+            <ul class="custom-list">
+                <li><strong>01 Open the Package</strong> Inside the downloaded <strong>X-Plane</strong> folder, open the folder named <strong>plugins</strong>.</li>
+                <li><strong>02 Copy All 7 Folders</strong> You will find <strong>7 plugin folders</strong>. Select all seven folders and <strong>Copy</strong> them together. Keep every folder and its contents intact.</li>
+                <li><strong>03 Open X-Plane's Plugins Directory</strong> Go to the main folder where X-Plane is installed on your PC, then open <strong>Resources</strong> followed by <strong>plugins</strong>.</li>
+                <li><strong>04 Paste &amp; Launch</strong> <strong>Paste</strong> all seven copied plugin folders directly into <strong>X-Plane / Resources / plugins</strong>. Then launch X-Plane and open Simulator Station on your device.</li>
+            </ul>
+
+            <div class="code-box">
+                <span>Copy from:</span>
+                <strong>Downloaded Package / X-Plane / plugins / [7 plugin folders]</strong>
+                <span style="display: block; margin-top: 15px;">Paste into:</span>
+                <strong>X-Plane / Resources / plugins</strong>
+            </div>
+
+            <div class="important-note">
+                <strong>New, simplified connection:</strong> You no longer need to enter your device's IP address in X-Plane's <strong>Data Output</strong> settings, configure UDP port <strong>49000</strong>, select Data Output indices, or follow the old video tutorial. Just install the seven included plugin folders as shown above. <strong>Keep your PC and mobile device on the same network.</strong>
+            </div>
+        </div>
+
+        <!-- Step 3: Instructor Session Broadcast (Original optional setup preserved) -->
+        <div class="setup-step">
+            <span class="step-label">Step 3</span>
             <h3>Instructor Screen Sharing Setup</h3>
             <p>Inside the <strong>X-Plane</strong> folder, you will find an executable file named <strong>BroadcastXplane.exe</strong>.</p>
             
@@ -768,30 +793,6 @@
                 <li><strong>02 Enter Session ID</strong> You will see a text field. Enter the <strong>exact same Session ID</strong> that you and your instructor agreed upon and entered in the Simulator Station app on your devices.</li>
                 <li><strong>03 Join Session</strong> Click the "Join Session" button. This will instantly initiate the secure screen share, allowing your instructor to view your simulator live.</li>
             </ul>
-        </div>
-
-        <!-- Step 3: Configure X-Plane -->
-        <div class="setup-step">
-            <span class="step-label">Step 3</span>
-            <h3>How to Connect the App to X-Plane</h3>
-            <p>To connect your device to the simulator, follow these exact configuration steps in X-Plane:</p>
-            
-            <ul class="custom-list">
-                <li><strong>01 Install the Plugin</strong> Download the WebFMC plugin and place it into the plugins folder located inside your X-Plane installation directory on your PC.</li>
-                <li><strong>02 Configure the App</strong> Open the Simulator Station app on your device (e.g., iPad) and enter your PC's IP address, your SimBrief ID, and your IVAO or VATSIM ID.</li>
-                <li><strong>03 Configure X-Plane</strong> Go to the "Data Output" settings inside X-Plane on your PC.</li>
-                <li><strong>04 Input IP & Port</strong> Enter the IP address of the iPad or device running the Simulator Station app, and ensure the UDP port is set to <strong>49000</strong>.</li>
-                <li><strong>05 Select Data Output</strong> In X-Plane Data Output settings, check the indices: <strong>3, 17, 20, 21</strong>.</li>
-            </ul>
-
-            <div class="important-note">
-                Once these steps are completed, your application will be successfully connected and able to control or receive data from X-Plane.
-            </div>
-
-            <!-- YouTube Video Embed -->
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/ySdnK7DPZPU?si=439GB0pwWFr917C-" title="How to Connect Simulator Station to X-Plane" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            </div>
         </div>
 
         <!-- Step 4: ACARS Logon Code -->
@@ -1093,7 +1094,7 @@
                 alert("Failed to copy the link. Please select and copy it manually.");
             });
         }
-
+        
         // Script to copy and open link for ACARS
         function copyAndOpenLink(elementId, buttonElement) {
             var linkText = document.getElementById(elementId).innerText;
