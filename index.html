@@ -627,26 +627,74 @@
 
     <!-- WHAT'S NEW SECTION 🔥 (NEW FEATURES ONLY) -->
     <section id="whatsnew" class="whats-new-section">
-        <h2 class="whats-new-title">System Architecture Enhancements</h2>
-        <p class="whats-new-subtitle">Simulator Station introduces advanced operational frameworks designed to bridge the gap between desktop simulation and professional aviation training methodologies.</p>
-        
-        <!-- IOS Highlight (NO IMAGE AS REQUESTED) -->
-        <div class="feature-highlight">
-            <div class="feature-text" style="flex: 100%; text-align: center;">
-                <h3 style="margin-bottom: 20px;">Instructor Operating Station (IOS) Integration</h3>
-                <p style="max-width: 900px; margin: 0 auto;">Transform standard flight sessions into professional training scenarios. Simulator Station now incorporates a fully synchronized Instructor Operating Station (IOS). This feature provides real-time cockpit screen streaming and zero-latency audio communication. Instructors maintain complete environmental authority, enabling instant aircraft repositioning to critical flight phases—such as Final Approach, Base legs, or specific Navaids—facilitating repetitive IFR/VFR procedural mastery. Furthermore, the system supports dynamic failure injection, allowing instructors to trigger unexpected system malfunctions mid-flight to meticulously evaluate pilot decision-making under realistic pressures.</p>
-            </div>
+        <h2 class="whats-new-title">🚀 What’s New in the Latest X-Plane Update</h2>
+        <p class="whats-new-subtitle">A major expansion focused on training, realism, and faster workflow—bringing advanced weather creation, TCAS practice, instant flight setup, detailed flight analysis, and deep aircraft systems monitoring directly to your device.</p>
+
+        <!-- NEW FEATURE 1: WEATHER -->
+        <div class="setup-step">
+            <span class="step-label">New Feature • Weather Training</span>
+            <h3>Advanced Weather Control &amp; Training Presets</h3>
+            <p>Take full control of the atmosphere inside X-Plane with a far more powerful weather workflow. Instead of depending only on default conditions, you can now build complex training environments, fine-tune each weather element, and quickly switch between ready-made scenarios designed for practice.</p>
+
+            <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">1. Custom Weather Builder</strong>
+            Create weather exactly the way you want it. Add multiple cloud layers and define each layer’s <strong>base altitude, top altitude, cloud type, coverage, turbulence, icing, precipitation type,</strong> and <strong>precipitation rate</strong>. You can also precisely control <strong>surface wind, wind aloft, temperature, pressure, visibility,</strong> and other atmospheric details to build highly specific training scenarios—from calm VFR days to demanding instrument conditions.</p>
+            <img src="https://github.com/osamanabel1999/App-assets/raw/refs/heads/main/IMG_4140.png" alt="Custom Weather Builder" class="success-img" style="margin-bottom: 30px;">
+
+            <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">2. Weather Presets &amp; Scenario Training</strong>
+            Train faster using a wide range of built-in weather presets. Instantly load conditions such as <strong>Clear, VFR, VFR Few Clouds, VFR Scattered, Terrain Low Visibility, Snow Conditions, Thunderstorm, Icing Conditions, Microburst, Windshear,</strong> and <strong>Severe Turbulence</strong>. These presets make it easy to repeat challenging situations and practice handling abnormal weather in a structured, realistic way.</p>
+            <img src="https://github.com/osamanabel1999/App-assets/blob/main/IMG_4141.png?raw=true" alt="Weather Presets and Training Scenarios" class="success-img">
         </div>
 
-        <!-- ACARS Highlight (WITH NEW IMAGE) -->
-        <div class="feature-highlight reverse" style="margin-top: 40px;">
-            <div class="feature-image">
-                <img src="https://raw.githubusercontent.com/osamanabel1999/Sim-app-Assests/refs/heads/main/IMG_3879.png" alt="Authentic ACARS Datalink">
-            </div>
-            <div class="feature-text">
-                <h3>Authentic ACARS & CPDLC Datalink</h3>
-                <p>Experience the absolute pinnacle of airline communications with a fully functional, study-level datalink architecture. Integrated seamlessly with VATSIM and IVAO networks, the ACARS module allows virtual pilots to send and receive free-text TELEX messages to ATC and active network traffic. Streamline high-workload phases by transmitting one-tap quick requests for Pre-Departure Clearances, pushbacks, and altitude step-climbs. The system also introduces a true-to-life CPDLC interface for instant ATC compliance (WILCO, STANDBY, UNABLE), live METAR/TAF fetching, and automated Oceanic Position Reports for precise cross-continental tracking.</p>
-            </div>
+        <!-- NEW FEATURE 2: TCAS -->
+        <div class="setup-step">
+            <span class="step-label">New Feature • Traffic Training</span>
+            <h3>Interactive TCAS Trainer</h3>
+            <p>Practice traffic awareness and conflict management with the new <strong>TCAS Trainer</strong>. This system allows you to manually inject traffic around your aircraft and create repeatable scenarios tailored for situational awareness and decision-making exercises.</p>
+
+            <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">1. Custom Traffic Injection</strong>
+            Add any aircraft you want and define its <strong>distance, speed, vertical speed, separation,</strong> and relative direction from your aircraft, including <strong>North, South, East, West, Northeast, Northwest, Southeast,</strong> and <strong>Southwest</strong>. You can also assign a <strong>custom heading</strong> to create crossing traffic exactly the way you need it. The injected aircraft appears in the simulator, and if your aircraft supports TCAS on the <strong>ND</strong>, it will appear there as well—making this a highly effective training tool for real-time traffic scanning and TCAS interpretation.</p>
+            <img src="https://raw.githubusercontent.com/osamanabel1999/App-assets/refs/heads/main/IMG_4142.png" alt="TCAS Trainer" class="success-img">
+        </div>
+
+        <!-- NEW FEATURE 3: AIRCRAFT FLIGHT SELECTOR -->
+        <div class="setup-step">
+            <span class="step-label">New Feature • Flight Setup</span>
+            <h3>Aircraft &amp; Flight Selector</h3>
+            <p>Launching a new flight is now dramatically faster. The new <strong>Aircraft &amp; Flight Selector</strong> lets you build and load a complete X-Plane startup scenario directly from the app, without digging through the simulator’s setup menus.</p>
+
+            <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">1. Start a Flight in Seconds</strong>
+            Choose the <strong>aircraft</strong> you want, search for any <strong>airport</strong>, and decide whether you want to begin at a <strong>gate/ramp</strong> or directly on a <strong>runway</strong>. The system displays the available <strong>gates and runways</strong>, allowing you to select the exact start position you need. You can also choose the desired startup state, such as <strong>Cold &amp; Dark</strong> or <strong>engines running</strong>, making it much easier to begin training or operational flights in just a few seconds.</p>
+            <img src="https://raw.githubusercontent.com/osamanabel1999/App-assets/refs/heads/main/IMG_4139.png" alt="Aircraft and Flight Selector" class="success-img">
+        </div>
+
+        <!-- NEW FEATURE 4: ANALYSIS -->
+        <div class="setup-step">
+            <span class="step-label">New Feature • Analysis</span>
+            <h3>Flight Analysis, Personal Progress &amp; Live Profiles</h3>
+            <p>Turn every flight into a learning opportunity with the new <strong>Analysis</strong> tools. The app reviews important flight data, tracks recurring patterns across your flights, and presents your performance in a clear and structured way so you can improve with every session.</p>
+
+            <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">1. Personal Progress &amp; Performance Scoring</strong>
+            The <strong>Personal Progress</strong> page tracks your ongoing performance across all recorded flights. It reviews important data such as <strong>speed, altitude, handling trends,</strong> and other flight parameters to generate a meaningful long-term evaluation. Over time, the system builds a broader picture of your flying, giving you a <strong>score out of 100</strong>, highlighting patterns, and helping you understand where your strengths are and where you still need improvement.</p>
+            <img src="https://raw.githubusercontent.com/osamanabel1999/App-assets/refs/heads/main/IMG_4145.png" alt="Analysis Overview and Personal Progress" class="success-img" style="margin-bottom: 30px;">
+
+            <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">2. Takeoff &amp; Landing Analysis</strong>
+            Review your <strong>takeoff</strong> and <strong>landing</strong> performance with far more precision. The system identifies the exact point where the aircraft became <strong>airborne</strong> or where it made <strong>touchdown</strong>, then displays useful data such as <strong>speed, groundspeed, runway distance,</strong> and other supporting parameters. A visual runway diagram marks the point of rotation or touchdown, while additional checks help analyze technique, including tendencies such as excessive bank or other handling issues during key phases of flight.</p>
+            <img src="https://raw.githubusercontent.com/osamanabel1999/App-assets/refs/heads/main/IMG_4147.png" alt="Takeoff and Landing Analysis" class="success-img" style="margin-bottom: 30px;">
+
+            <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">3. Live Profiles &amp; Data Trends</strong>
+            Explore live profile charts for important parameters such as <strong>airspeed, altitude, vertical speed, roll,</strong> and <strong>bank angle</strong>. These profiles make it easier to understand how the aircraft behaved throughout the flight and present the data in a cleaner, more readable way for detailed debriefing and self-analysis.</p>
+            <img src="https://raw.githubusercontent.com/osamanabel1999/App-assets/refs/heads/main/IMG_4150.png" alt="Live Flight Profiles" class="success-img">
+        </div>
+
+        <!-- NEW FEATURE 5: SYSTEMS -->
+        <div class="setup-step">
+            <span class="step-label">New Feature • Aircraft Systems</span>
+            <h3>Deep Aircraft Systems Monitoring</h3>
+            <p>The new <strong>Systems</strong> page gives you a deeper, more technical look into both the aircraft and simulator state. It brings together operational data, performance data, and system monitoring in one organized interface, making it much easier to inspect important information while flying.</p>
+
+            <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">1. Detailed Multi-Category Monitoring</strong>
+            Browse a rich set of data pages such as <strong>Engines, Fuel, Systems, Alerts,</strong> and <strong>Data Monitor</strong>. On the <strong>Engine</strong> page, the app can display an extensive set of values for each available engine—whether the aircraft has <strong>1, 2, or 4 engines</strong>. Depending on the aircraft, this may include <strong>N1, N2, oil temperature, cylinder head temperature, exhaust gas temperature, engine speed, engine power, engine running state, oil quantity, engine thrust, battery current,</strong> and many more supporting parameters. The result is a polished monitoring page designed for pilots who want quick access to detailed aircraft data.</p>
+            <img src="لينك" alt="Aircraft Systems Monitoring" class="success-img">
         </div>
     </section>
 
@@ -872,6 +920,74 @@
 
             <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">4. In-App Browser & Authentic Cabin PA</strong>
             An embedded web browser allows pilots to access external aviation data without leaving the application. To further enhance realism, the system includes an authentic Cabin Public Address module tailored for boarding, cruising, and landing phases.</p>
+        </div>
+
+
+        <!-- NEW FEATURE 1: WEATHER -->
+        <div class="setup-step">
+            <span class="step-label">New Feature • Weather Training</span>
+            <h3>Advanced Weather Control &amp; Training Presets</h3>
+            <p>Take full control of the atmosphere inside X-Plane with a far more powerful weather workflow. Instead of depending only on default conditions, you can now build complex training environments, fine-tune each weather element, and quickly switch between ready-made scenarios designed for practice.</p>
+
+            <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">1. Custom Weather Builder</strong>
+            Create weather exactly the way you want it. Add multiple cloud layers and define each layer’s <strong>base altitude, top altitude, cloud type, coverage, turbulence, icing, precipitation type,</strong> and <strong>precipitation rate</strong>. You can also precisely control <strong>surface wind, wind aloft, temperature, pressure, visibility,</strong> and other atmospheric details to build highly specific training scenarios—from calm VFR days to demanding instrument conditions.</p>
+            <img src="https://github.com/osamanabel1999/App-assets/raw/refs/heads/main/IMG_4140.png" alt="Custom Weather Builder" class="success-img" style="margin-bottom: 30px;">
+
+            <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">2. Weather Presets &amp; Scenario Training</strong>
+            Train faster using a wide range of built-in weather presets. Instantly load conditions such as <strong>Clear, VFR, VFR Few Clouds, VFR Scattered, Terrain Low Visibility, Snow Conditions, Thunderstorm, Icing Conditions, Microburst, Windshear,</strong> and <strong>Severe Turbulence</strong>. These presets make it easy to repeat challenging situations and practice handling abnormal weather in a structured, realistic way.</p>
+            <img src="https://github.com/osamanabel1999/App-assets/blob/main/IMG_4141.png?raw=true" alt="Weather Presets and Training Scenarios" class="success-img">
+        </div>
+
+        <!-- NEW FEATURE 2: TCAS -->
+        <div class="setup-step">
+            <span class="step-label">New Feature • Traffic Training</span>
+            <h3>Interactive TCAS Trainer</h3>
+            <p>Practice traffic awareness and conflict management with the new <strong>TCAS Trainer</strong>. This system allows you to manually inject traffic around your aircraft and create repeatable scenarios tailored for situational awareness and decision-making exercises.</p>
+
+            <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">1. Custom Traffic Injection</strong>
+            Add any aircraft you want and define its <strong>distance, speed, vertical speed, separation,</strong> and relative direction from your aircraft, including <strong>North, South, East, West, Northeast, Northwest, Southeast,</strong> and <strong>Southwest</strong>. You can also assign a <strong>custom heading</strong> to create crossing traffic exactly the way you need it. The injected aircraft appears in the simulator, and if your aircraft supports TCAS on the <strong>ND</strong>, it will appear there as well—making this a highly effective training tool for real-time traffic scanning and TCAS interpretation.</p>
+            <img src="https://raw.githubusercontent.com/osamanabel1999/App-assets/refs/heads/main/IMG_4142.png" alt="TCAS Trainer" class="success-img">
+        </div>
+
+        <!-- NEW FEATURE 3: AIRCRAFT FLIGHT SELECTOR -->
+        <div class="setup-step">
+            <span class="step-label">New Feature • Flight Setup</span>
+            <h3>Aircraft &amp; Flight Selector</h3>
+            <p>Launching a new flight is now dramatically faster. The new <strong>Aircraft &amp; Flight Selector</strong> lets you build and load a complete X-Plane startup scenario directly from the app, without digging through the simulator’s setup menus.</p>
+
+            <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">1. Start a Flight in Seconds</strong>
+            Choose the <strong>aircraft</strong> you want, search for any <strong>airport</strong>, and decide whether you want to begin at a <strong>gate/ramp</strong> or directly on a <strong>runway</strong>. The system displays the available <strong>gates and runways</strong>, allowing you to select the exact start position you need. You can also choose the desired startup state, such as <strong>Cold &amp; Dark</strong> or <strong>engines running</strong>, making it much easier to begin training or operational flights in just a few seconds.</p>
+            <img src="https://raw.githubusercontent.com/osamanabel1999/App-assets/refs/heads/main/IMG_4139.png" alt="Aircraft and Flight Selector" class="success-img">
+        </div>
+
+        <!-- NEW FEATURE 4: ANALYSIS -->
+        <div class="setup-step">
+            <span class="step-label">New Feature • Analysis</span>
+            <h3>Flight Analysis, Personal Progress &amp; Live Profiles</h3>
+            <p>Turn every flight into a learning opportunity with the new <strong>Analysis</strong> tools. The app reviews important flight data, tracks recurring patterns across your flights, and presents your performance in a clear and structured way so you can improve with every session.</p>
+
+            <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">1. Personal Progress &amp; Performance Scoring</strong>
+            The <strong>Personal Progress</strong> page tracks your ongoing performance across all recorded flights. It reviews important data such as <strong>speed, altitude, handling trends,</strong> and other flight parameters to generate a meaningful long-term evaluation. Over time, the system builds a broader picture of your flying, giving you a <strong>score out of 100</strong>, highlighting patterns, and helping you understand where your strengths are and where you still need improvement.</p>
+            <img src="https://raw.githubusercontent.com/osamanabel1999/App-assets/refs/heads/main/IMG_4145.png" alt="Analysis Overview and Personal Progress" class="success-img" style="margin-bottom: 30px;">
+
+            <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">2. Takeoff &amp; Landing Analysis</strong>
+            Review your <strong>takeoff</strong> and <strong>landing</strong> performance with far more precision. The system identifies the exact point where the aircraft became <strong>airborne</strong> or where it made <strong>touchdown</strong>, then displays useful data such as <strong>speed, groundspeed, runway distance,</strong> and other supporting parameters. A visual runway diagram marks the point of rotation or touchdown, while additional checks help analyze technique, including tendencies such as excessive bank or other handling issues during key phases of flight.</p>
+            <img src="https://raw.githubusercontent.com/osamanabel1999/App-assets/refs/heads/main/IMG_4147.png" alt="Takeoff and Landing Analysis" class="success-img" style="margin-bottom: 30px;">
+
+            <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">3. Live Profiles &amp; Data Trends</strong>
+            Explore live profile charts for important parameters such as <strong>airspeed, altitude, vertical speed, roll,</strong> and <strong>bank angle</strong>. These profiles make it easier to understand how the aircraft behaved throughout the flight and present the data in a cleaner, more readable way for detailed debriefing and self-analysis.</p>
+            <img src="https://raw.githubusercontent.com/osamanabel1999/App-assets/refs/heads/main/IMG_4150.png" alt="Live Flight Profiles" class="success-img">
+        </div>
+
+        <!-- NEW FEATURE 5: SYSTEMS -->
+        <div class="setup-step">
+            <span class="step-label">New Feature • Aircraft Systems</span>
+            <h3>Deep Aircraft Systems Monitoring</h3>
+            <p>The new <strong>Systems</strong> page gives you a deeper, more technical look into both the aircraft and simulator state. It brings together operational data, performance data, and system monitoring in one organized interface, making it much easier to inspect important information while flying.</p>
+
+            <p><strong style="color: var(--accent); display: block; margin-top: 20px; margin-bottom: 5px; font-size: 1.1rem;">1. Detailed Multi-Category Monitoring</strong>
+            Browse a rich set of data pages such as <strong>Engines, Fuel, Systems, Alerts,</strong> and <strong>Data Monitor</strong>. On the <strong>Engine</strong> page, the app can display an extensive set of values for each available engine—whether the aircraft has <strong>1, 2, or 4 engines</strong>. Depending on the aircraft, this may include <strong>N1, N2, oil temperature, cylinder head temperature, exhaust gas temperature, engine speed, engine power, engine running state, oil quantity, engine thrust, battery current,</strong> and many more supporting parameters. The result is a polished monitoring page designed for pilots who want quick access to detailed aircraft data.</p>
+            <img src="لينك" alt="Aircraft Systems Monitoring" class="success-img">
         </div>
 
         <!-- Walkthrough: Professional Training (IOS) -->
